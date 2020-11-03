@@ -14,7 +14,7 @@ function Protect-PSCode {
     [ValidateNotNullOrEmpty()]
     [String]$String,
 
-    [Parameter()]
+    [Parameter(Position=1)]
     [String]$OutFile = "$pwd\$(-join('a'..'z'+'A'..'Z'|Get-Random -Count 13)).ps1"
   )
 
@@ -31,8 +31,8 @@ function Protect-PSCode {
     }
 
     $bit, $out, $c, $sym = @{
-      0 = "`$()-!{}", "!{}+!{}", "!{}-!{}"
-      1 = "!!{}+!{}", "!!{}-!{}"
+      0 = '$()-!{}', '!{}+!{}', '!{}-!{}'
+      1 = '!!{}+!{}', '!!{}-!{}'
     }, '', 64, ('${<}', '${>}')
 
     $bit.Keys.ForEach{
