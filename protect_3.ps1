@@ -12,7 +12,7 @@ function Protect-PSCode {
 
     [Parameter()]
     [ValidateRange(1, 25)]
-    [Byte]$Key = 1,
+    [Byte]$Key = 1, # usage: Protect-PSCode C:\target\script.ps1 -Key 23
 
     [Parameter()]
     [String]$OutFile = "$pwd\$(-join('a'..'z'+'A'..'Z'|Get-Random -Count 13)).ps1"
